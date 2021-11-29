@@ -11,8 +11,8 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/crop_image_menu_rotate_left"
         app:tint="@color/black" />
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/back" />
 
     <TextView
-        android:id="@+id/et_date_time"
+        android:id="@+id/tv_date_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
@@ -70,7 +71,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_date_time">
+        app:layout_constraintTop_toBottomOf="@+id/tv_date_time">
 
         <View
             android:id="@+id/colorView"
@@ -100,45 +101,133 @@
         app:layout_constraintTop_toBottomOf="@id/ll_sub_title">
 
 
-
         <ImageView
             android:id="@+id/imgNote"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_300sdp"
-            android:visibility="gone"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imgDelete"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"
-            android:visibility="gone"
             android:layout_alignParentTop="true"
-            android:src="@drawable/crop_image_menu_rotate_left" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:src="@drawable/crop_image_menu_rotate_left"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutWebUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutImage">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etWebLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Enter Web URL"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/_10sdp"
+                android:text="http://"
+                android:textSize="@dimen/_12ssp" />
+
+            <ImageView
+                android:id="@+id/imgUrlDelete"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/crop_image_menu_rotate_left"
+                android:visibility="gone"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@color/colorAccent"
+                android:text="CANCEL"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12ssp" />
+
+            <Button
+                android:id="@+id/btnOk"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@color/colorAccent"
+                android:text="OK"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12ssp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvWebLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutWebUrl" />
 
     <EditText
         android:id="@+id/et_note_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
-        android:padding="@dimen/_10sdp"
         android:hint="Enter Note Here"
-        android:textColor="@color/black"
         android:inputType="textMultiLine"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_sub_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWebLink" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         app:layout_constraintBottom_toBottomOf="parent"

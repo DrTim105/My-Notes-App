@@ -3,6 +3,7 @@ package com.salihutimothy.mynotesapp.util
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.salihutimothy.mynotesapp.R
+//import kotlinx.android.synthetic.main.fragmr..*
+
 
 class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -30,6 +33,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var imgNote4: ImageView
     private lateinit var imgNote5: ImageView
     private lateinit var imgNote6: ImageView
+    private lateinit var imgMore: ImageView
 
     private lateinit var layoutImage: LinearLayout
     private lateinit var layoutWebUrl: LinearLayout
@@ -102,28 +106,37 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setListener()
     }
 
     private fun setListener() {
-        fNote1 = requireActivity().findViewById(R.id.fNote1) as FrameLayout
-        fNote2 = requireActivity().findViewById(R.id.fNote2) as FrameLayout
-        fNote3 = requireActivity().findViewById(R.id.fNote3) as FrameLayout
-        fNote4 = requireActivity().findViewById(R.id.fNote4) as FrameLayout
-        fNote5 = requireActivity().findViewById(R.id.fNote5) as FrameLayout
-        fNote6 = requireActivity().findViewById(R.id.fNote6) as FrameLayout
+        Log.d("NOTES_BOTTOM_FRAGMENT", "setListener clicked")
 
-        imgNote1 = requireActivity().findViewById(R.id.imgNote1) as ImageView
-        imgNote2 = requireActivity().findViewById(R.id.imgNote2) as ImageView
-        imgNote3 = requireActivity().findViewById(R.id.imgNote3) as ImageView
-        imgNote4 = requireActivity().findViewById(R.id.imgNote4) as ImageView
-        imgNote5 = requireActivity().findViewById(R.id.imgNote5) as ImageView
-        imgNote6 = requireActivity().findViewById(R.id.imgNote6) as ImageView
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_bottom_sheet, null)
 
-        layoutImage = requireActivity().findViewById(R.id.layoutImage) as LinearLayout
-        layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
-        layoutDeleteNote = requireActivity().findViewById(R.id.layoutDeleteNote) as LinearLayout
+        fNote1 = requireDialog().findViewById(R.id.fNote1) as FrameLayout
+        fNote2 = requireDialog().findViewById(R.id.fNote2) as FrameLayout
+        fNote3 = requireDialog().findViewById(R.id.fNote3) as FrameLayout
+        fNote4 = requireDialog().findViewById(R.id.fNote4) as FrameLayout
+        fNote5 = requireDialog().findViewById(R.id.fNote5) as FrameLayout
+        fNote6 = requireDialog().findViewById(R.id.fNote6) as FrameLayout
+
+        imgNote1 = requireDialog().findViewById(R.id.imgNote1) as ImageView
+        imgNote2 = requireDialog().findViewById(R.id.imgNote2) as ImageView
+        imgNote3 = requireDialog().findViewById(R.id.imgNote3) as ImageView
+        imgNote4 = requireDialog().findViewById(R.id.imgNote4) as ImageView
+        imgNote5 = requireDialog().findViewById(R.id.imgNote5) as ImageView
+        imgNote6 = requireDialog().findViewById(R.id.imgNote6) as ImageView
+        imgMore = requireDialog().findViewById(R.id.imgMore) as ImageView
+
+        layoutImage = requireDialog().findViewById(R.id.layoutImage) as LinearLayout
+        layoutWebUrl = requireDialog().findViewById(R.id.layoutWebUrl) as LinearLayout
+        layoutDeleteNote = requireDialog().findViewById(R.id.layoutDeleteNote) as LinearLayout
+
 
         fNote1.setOnClickListener {
+            Log.d("NOTES_BOTTOM_FRAGMENT", "fNote1 clicked")
 
             imgNote1.setImageResource(R.drawable.crop_image_menu_rotate_left) // tick image
             imgNote2.setImageResource(0)
@@ -218,6 +231,8 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         layoutImage.setOnClickListener {
+            Log.d("NOTES_BOTTOM_FRAGMENT", "layoutImage clicked")
+
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action", "Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
