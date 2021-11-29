@@ -17,27 +17,24 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.salihutimothy.mynotesapp.database.NotesDatabase
 import com.salihutimothy.mynotesapp.entities.Notes
 import com.salihutimothy.mynotesapp.util.NotesBottomSheetFragment
 import kotlinx.coroutines.launch
-import pub.devrel.easypermissions.AppSettingsDialog
-import pub.devrel.easypermissions.EasyPermissions
 import java.text.DateFormat.getDateTimeInstance
 import java.util.*
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
-import androidx.core.app.ActivityCompat
 
 
-class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
-    EasyPermissions.RationaleCallbacks {
+class CreateNoteFragment : BaseFragment(){
 
 
     private lateinit var tvDateTime: TextView
@@ -57,8 +54,6 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
     private lateinit var btnCancel: Button
     var currentDate: String? = null
 
-    private var READ_STORAGE_PERM = 123
-    private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
     private var webLink = ""
 
@@ -405,16 +400,4 @@ class CreateNoteFragment : BaseFragment(), EasyPermissions.PermissionCallbacks,
         }
     }
 
-
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-    }
-
-    override fun onRationaleAccepted(requestCode: Int) {
-    }
-
-    override fun onRationaleDenied(requestCode: Int) {
-    }
 }
