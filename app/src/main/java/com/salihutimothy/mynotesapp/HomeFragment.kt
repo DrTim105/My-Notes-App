@@ -60,8 +60,27 @@ class HomeFragment : BaseFragment() {
                 recyclerView.adapter = notesAdapter
             }
         }
+
+        notesAdapter.setOnClickListener(onClicked)
+
         fabCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), false)
+        }
+
+    }
+
+    private val onClicked = object : NotesAdapter.OnItemClickListener {
+        override fun onClicked(noteId: Int) {
+
+            var fragment : Fragment
+            var bundle = Bundle()
+            bundle.putString("edit", "")
+            bundle.putInt("noteId", noteId)
+            fragment = CreateNoteFragment.newInstance()
+            fragment.arguments = bundle
+
+            replaceFragment(CreateNoteFragment.newInstance(), false)
+
         }
 
     }

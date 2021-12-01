@@ -56,14 +56,14 @@ class CreateNoteFragment : BaseFragment(){
 
     private var selectedImagePath = ""
     private var webLink = ""
+    private var noteId = -1
 
     var selectedColor = "#FFFFFFFF" //
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
+        noteId = requireArguments().getInt("noteId",-1)
 
-        }
     }
 
     override fun onCreateView(
@@ -93,10 +93,49 @@ class CreateNoteFragment : BaseFragment(){
         imgBack = requireActivity().findViewById(R.id.back) as ImageView
         imgMore = requireActivity().findViewById(R.id.imgMore) as ImageView
         etWebLink = requireActivity().findViewById(R.id.etWebLink) as EditText
+        etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
+        etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
+        etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
+        colorView = requireActivity().findViewById(R.id.colorView) as View
         btnOk = requireActivity().findViewById(R.id.btnOk) as Button
         btnCancel = requireActivity().findViewById(R.id.btnCancel) as Button
         layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
+        layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
         imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
+
+        if (noteId != -1){
+            launch {
+                context?.let {
+                    var notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
+                    colorView.setBackgroundColor(Color.parseColor(notes.color))
+                    etNoteTitle.setText(notes.title)
+                    etSubTitle.setText(notes.subTitle)
+                    etNoteDesc.setText(notes.noteText)
+                    if (notes.imgPath != ""){
+                        selectedImagePath = notes.imgPath!!
+                        imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
+                        layoutImage.visibility = View.VISIBLE
+                        imgNote.visibility = View.VISIBLE
+//                        imgDelete.visibility = View.VISIBLE
+                    }else{
+                        layoutImage.visibility = View.GONE
+                        imgNote.visibility = View.GONE
+//                        imgDelete.visibility = View.GONE
+                    }
+
+                    if (notes.webLink != ""){
+                        webLink = notes.webLink!!
+                        tvWebLink.text = notes.webLink
+                        layoutWebUrl.visibility = View.VISIBLE
+                        etWebLink.setText(notes.webLink)
+//                        imgUrlDelete.visibility = View.VISIBLE
+                    }else{
+//                        imgUrlDelete.visibility = View.GONE
+                        layoutWebUrl.visibility = View.GONE
+                    }
+                }
+            }
+        }
 
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
