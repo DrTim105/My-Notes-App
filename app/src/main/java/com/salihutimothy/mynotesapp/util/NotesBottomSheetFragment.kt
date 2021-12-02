@@ -15,8 +15,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.salihutimothy.mynotesapp.R
-//import kotlinx.android.synthetic.main.fragmr..*
-
 
 class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -43,10 +41,11 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
     companion object {
 
-        fun newInstance() =
+        var noteId = -1
+        fun newInstance(id: Int) =
             NotesBottomSheetFragment().apply {
                 arguments = Bundle().apply {
-
+                    noteId = id
                 }
             }
     }
@@ -84,6 +83,9 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
                             dismiss()
                             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
                         }
+                        BottomSheetBehavior.STATE_HALF_EXPANDED -> {
+                            TODO()
+                        }
                     }
                 }
 
@@ -91,8 +93,6 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
                     TODO("Not yet implemented")
                 }
             })
-
-
         }
     }
 
@@ -106,14 +106,18 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        layoutDeleteNote = requireDialog().findViewById(R.id.layoutDeleteNote) as LinearLayout
 
+        if (noteId != -1){
+            layoutDeleteNote.visibility = View.VISIBLE
+        }else{
+            layoutDeleteNote.visibility = View.GONE
+        }
         setListener()
     }
 
     private fun setListener() {
         Log.d("NOTES_BOTTOM_FRAGMENT", "setListener clicked")
-
-        val view = LayoutInflater.from(context).inflate(R.layout.fragment_bottom_sheet, null)
 
         fNote1 = requireDialog().findViewById(R.id.fNote1) as FrameLayout
         fNote2 = requireDialog().findViewById(R.id.fNote2) as FrameLayout

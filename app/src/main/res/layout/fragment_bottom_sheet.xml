@@ -247,7 +247,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorPrimary"
         android:gravity="center"
         android:visibility="gone"
         android:layout_marginStart="@dimen/_10sdp"

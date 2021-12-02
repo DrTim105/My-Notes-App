@@ -79,11 +79,9 @@ class CreateNoteFragment : BaseFragment() {
     }
 
     companion object {
-
         fun newInstance() =
             CreateNoteFragment().apply {
                 arguments = Bundle().apply {
-
                 }
             }
     }
@@ -158,19 +156,19 @@ class CreateNoteFragment : BaseFragment() {
         tvDateTime.text = currentDate
 
         imgDone.setOnClickListener {
-            if (noteId != -1){
+            if (noteId != -1) {
                 updateNote()
-            }else{
+            } else {
                 saveNote()
             }
         }
 
         imgBack.setOnClickListener {
-            replaceFragment(HomeFragment.newInstance(), false)
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         imgMore.setOnClickListener {
-            val noteBottomSheetFragment = NotesBottomSheetFragment.newInstance()
+            val noteBottomSheetFragment = NotesBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(
                 requireActivity().supportFragmentManager,
                 "Note Bottom Sheet Fragment"
@@ -198,10 +196,10 @@ class CreateNoteFragment : BaseFragment() {
         }
 
         btnCancel.setOnClickListener {
-            if (noteId != -1){
+            if (noteId != -1) {
                 tvWebLink.visibility = View.VISIBLE
                 layoutWebUrl.visibility = View.GONE
-            }else{
+            } else {
                 layoutWebUrl.visibility = View.GONE
             }
 
@@ -215,7 +213,7 @@ class CreateNoteFragment : BaseFragment() {
 
     }
 
-    private fun updateNote(){
+    private fun updateNote() {
 
         etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
         etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
@@ -281,6 +279,15 @@ class CreateNoteFragment : BaseFragment() {
             }
         }
 
+    }
+
+    private fun deleteNote() {
+        launch {
+            context?.let {
+                NotesDatabase.getDatabase(it).notesDao().deleteSpecificNote(noteId)
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
     }
 
     private fun replaceFragment(fragment: Fragment, istransition: Boolean) {
@@ -355,8 +362,7 @@ class CreateNoteFragment : BaseFragment() {
                     layoutWebUrl.visibility = View.VISIBLE
                 }
                 "DeleteNote" -> {
-                    //delete note
-//                    deleteNote()
+                    deleteNote()
                 }
 
 
@@ -438,13 +444,9 @@ class CreateNoteFragment : BaseFragment() {
             }
         }
 
-    @SuppressLint("QueryPermissionsNeeded")
     private fun pickImageFromGallery() {
-        Log.e(TAG, "pickImageFromGallery: opened")
-
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
-            Log.e(TAG, "pickImageFromGallery: continued")
 
             resultLauncher.launch(intent)
         }
