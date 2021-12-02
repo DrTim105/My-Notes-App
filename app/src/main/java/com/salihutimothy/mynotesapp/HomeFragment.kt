@@ -72,14 +72,13 @@ class HomeFragment : BaseFragment() {
     private val onClicked = object : NotesAdapter.OnItemClickListener {
         override fun onClicked(noteId: Int) {
 
-            var fragment : Fragment
-            var bundle = Bundle()
-            bundle.putString("edit", "")
+            val fragment : Fragment
+            val bundle = Bundle()
             bundle.putInt("noteId", noteId)
             fragment = CreateNoteFragment.newInstance()
             fragment.arguments = bundle
 
-            replaceFragment(CreateNoteFragment.newInstance(), false)
+            replaceFragment(fragment, false)
 
         }
 

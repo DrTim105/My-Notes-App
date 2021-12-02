@@ -1,6 +1,7 @@
 package com.salihutimothy.mynotesapp
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
@@ -34,7 +35,7 @@ import java.text.DateFormat.getDateTimeInstance
 import java.util.*
 
 
-class CreateNoteFragment : BaseFragment(){
+class CreateNoteFragment : BaseFragment() {
 
 
     private lateinit var tvDateTime: TextView
@@ -43,6 +44,8 @@ class CreateNoteFragment : BaseFragment(){
     private lateinit var imgBack: ImageView
     private lateinit var imgMore: ImageView
     private lateinit var imgNote: ImageView
+    private lateinit var imgDelete: ImageView
+    private lateinit var imgUrlDelete: ImageView
     private lateinit var etNoteTitle: EditText
     private lateinit var etSubTitle: EditText
     private lateinit var etNoteDesc: EditText
@@ -62,7 +65,7 @@ class CreateNoteFragment : BaseFragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        noteId = requireArguments().getInt("noteId",-1)
+        noteId = requireArguments().getInt("noteId", -1)
 
     }
 
@@ -92,6 +95,9 @@ class CreateNoteFragment : BaseFragment(){
         imgDone = requireActivity().findViewById(R.id.done) as ImageView
         imgBack = requireActivity().findViewById(R.id.back) as ImageView
         imgMore = requireActivity().findViewById(R.id.imgMore) as ImageView
+        imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
+        imgDelete = requireActivity().findViewById(R.id.imgDelete) as ImageView
+        imgUrlDelete = requireActivity().findViewById(R.id.imgUrlDelete) as ImageView
         etWebLink = requireActivity().findViewById(R.id.etWebLink) as EditText
         etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
         etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
@@ -101,36 +107,39 @@ class CreateNoteFragment : BaseFragment(){
         btnCancel = requireActivity().findViewById(R.id.btnCancel) as Button
         layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
         layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
-        imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
 
-        if (noteId != -1){
+        if (noteId != -1) {
             launch {
                 context?.let {
-                    var notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
+                    val notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
                     colorView.setBackgroundColor(Color.parseColor(notes.color))
                     etNoteTitle.setText(notes.title)
                     etSubTitle.setText(notes.subTitle)
                     etNoteDesc.setText(notes.noteText)
-                    if (notes.imgPath != ""){
+
+
+                    selectedColor = notes.color!!
+
+                    if (notes.imgPath != "") {
                         selectedImagePath = notes.imgPath!!
                         imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
                         layoutImage.visibility = View.VISIBLE
                         imgNote.visibility = View.VISIBLE
-//                        imgDelete.visibility = View.VISIBLE
-                    }else{
+                        imgDelete.visibility = View.VISIBLE
+                    } else {
                         layoutImage.visibility = View.GONE
                         imgNote.visibility = View.GONE
-//                        imgDelete.visibility = View.GONE
+                        imgDelete.visibility = View.GONE
                     }
 
-                    if (notes.webLink != ""){
+                    if (notes.webLink != "") {
                         webLink = notes.webLink!!
                         tvWebLink.text = notes.webLink
                         layoutWebUrl.visibility = View.VISIBLE
                         etWebLink.setText(notes.webLink)
-//                        imgUrlDelete.visibility = View.VISIBLE
-                    }else{
-//                        imgUrlDelete.visibility = View.GONE
+                        imgUrlDelete.visibility = View.VISIBLE
+                    } else {
+                        imgUrlDelete.visibility = View.GONE
                         layoutWebUrl.visibility = View.GONE
                     }
                 }
@@ -149,7 +158,11 @@ class CreateNoteFragment : BaseFragment(){
         tvDateTime.text = currentDate
 
         imgDone.setOnClickListener {
-            saveNote()
+            if (noteId != -1){
+                updateNote()
+            }else{
+                saveNote()
+            }
         }
 
         imgBack.setOnClickListener {
@@ -157,11 +170,23 @@ class CreateNoteFragment : BaseFragment(){
         }
 
         imgMore.setOnClickListener {
-            var noteBottomSheetFragment = NotesBottomSheetFragment.newInstance()
+            val noteBottomSheetFragment = NotesBottomSheetFragment.newInstance()
             noteBottomSheetFragment.show(
                 requireActivity().supportFragmentManager,
                 "Note Bottom Sheet Fragment"
             )
+        }
+
+        imgDelete.setOnClickListener {
+            selectedImagePath = ""
+            layoutImage.visibility = View.GONE
+        }
+
+        imgUrlDelete.setOnClickListener {
+            webLink = ""
+            tvWebLink.visibility = View.GONE
+            imgUrlDelete.visibility = View.GONE
+            layoutWebUrl.visibility = View.GONE
         }
 
         btnOk.setOnClickListener {
@@ -173,7 +198,13 @@ class CreateNoteFragment : BaseFragment(){
         }
 
         btnCancel.setOnClickListener {
-            layoutWebUrl.visibility = View.GONE
+            if (noteId != -1){
+                tvWebLink.visibility = View.VISIBLE
+                layoutWebUrl.visibility = View.GONE
+            }else{
+                layoutWebUrl.visibility = View.GONE
+            }
+
         }
 
         tvWebLink.setOnClickListener {
@@ -182,6 +213,37 @@ class CreateNoteFragment : BaseFragment(){
         }
 
 
+    }
+
+    private fun updateNote(){
+
+        etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
+        etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
+        etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
+
+        launch {
+
+            context?.let {
+                val notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
+
+                notes.title = etNoteTitle.text.toString()
+                notes.subTitle = etSubTitle.text.toString()
+                notes.noteText = etNoteDesc.text.toString()
+                notes.dateTime = currentDate
+                notes.color = selectedColor
+                notes.imgPath = selectedImagePath
+                notes.webLink = webLink
+
+                NotesDatabase.getDatabase(it).notesDao().updateNote(notes)
+                etNoteTitle.setText("")
+                etSubTitle.setText("")
+                etNoteDesc.setText("")
+                layoutImage.visibility = View.GONE
+                imgNote.visibility = View.GONE
+                tvWebLink.visibility = View.GONE
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
     }
 
     private fun saveNote() {
@@ -370,16 +432,20 @@ class CreateNoteFragment : BaseFragment(){
                         } catch (e: Exception) {
                             Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
                         }
-
                     }
                 }
 
             }
         }
 
+    @SuppressLint("QueryPermissionsNeeded")
     private fun pickImageFromGallery() {
+        Log.e(TAG, "pickImageFromGallery: opened")
+
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            Log.e(TAG, "pickImageFromGallery: continued")
+
             resultLauncher.launch(intent)
         }
     }
