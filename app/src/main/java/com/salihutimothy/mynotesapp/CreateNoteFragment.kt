@@ -1,7 +1,6 @@
 package com.salihutimothy.mynotesapp
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
@@ -93,7 +92,7 @@ class CreateNoteFragment : BaseFragment() {
         imgDone = requireActivity().findViewById(R.id.done) as ImageView
         imgBack = requireActivity().findViewById(R.id.back) as ImageView
         imgMore = requireActivity().findViewById(R.id.imgMore) as ImageView
-        imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
+        imgNote = requireActivity().findViewById(R.id.imgCreateNote) as ImageView
         imgDelete = requireActivity().findViewById(R.id.imgDelete) as ImageView
         imgUrlDelete = requireActivity().findViewById(R.id.imgUrlDelete) as ImageView
         etWebLink = requireActivity().findViewById(R.id.etWebLink) as EditText
@@ -119,6 +118,7 @@ class CreateNoteFragment : BaseFragment() {
                     selectedColor = notes.color!!
 
                     if (notes.imgPath != "") {
+                        Log.d("CreateNoteFragment", "image identified")
                         selectedImagePath = notes.imgPath!!
                         imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
                         layoutImage.visibility = View.VISIBLE
@@ -309,7 +309,7 @@ class CreateNoteFragment : BaseFragment() {
             colorView = requireActivity().findViewById(R.id.colorView) as View
             layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
             layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
-            imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
+            imgNote = requireActivity().findViewById(R.id.imgCreateNote) as ImageView
 
 
             when (actionColor) {
@@ -420,7 +420,7 @@ class CreateNoteFragment : BaseFragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent? = result.data
-                imgNote = requireActivity().findViewById(R.id.imgNote) as ImageView
+                imgNote = requireActivity().findViewById(R.id.imgCreateNote) as ImageView
                 layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
 
                 if (data != null) {

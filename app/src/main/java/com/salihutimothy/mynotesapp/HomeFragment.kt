@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -12,12 +14,18 @@ import com.salihutimothy.mynotesapp.adapter.NotesAdapter
 import com.salihutimothy.mynotesapp.database.NotesDatabase
 import com.salihutimothy.mynotesapp.entities.Notes
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : BaseFragment() {
 
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
+    private lateinit var fabCreateNote: FloatingActionButton
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView: SearchView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +55,9 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fabCreateNote : FloatingActionButton = requireActivity().findViewById(R.id.fabCreateNote)
-        val recyclerView: RecyclerView = requireActivity().findViewById(R.id.rv_notes)
+        fabCreateNote = requireActivity().findViewById(R.id.fabCreateNote) as FloatingActionButton
+        recyclerView = requireActivity().findViewById(R.id.rv_notes) as RecyclerView
+        searchView = requireActivity().findViewById(R.id.search_view) as SearchView
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -66,6 +75,28 @@ class HomeFragment : BaseFragment() {
         fabCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), false)
         }
+
+        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+
+                val tempArr = ArrayList<Notes>()
+
+                for (arr in arrNotes){
+                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                        tempArr.add(arr)
+                    }
+                }
+
+                notesAdapter.setData(tempArr)
+                notesAdapter.notifyDataSetChanged()
+                return true
+            }
+
+        })
 
     }
 
