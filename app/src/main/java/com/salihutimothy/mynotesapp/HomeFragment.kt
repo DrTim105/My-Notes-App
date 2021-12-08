@@ -55,9 +55,9 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fabCreateNote = requireActivity().findViewById(R.id.fabCreateNote) as FloatingActionButton
-        recyclerView = requireActivity().findViewById(R.id.rv_notes) as RecyclerView
-        searchView = requireActivity().findViewById(R.id.search_view) as SearchView
+        fabCreateNote = view.findViewById(R.id.fabCreateNote) as FloatingActionButton
+        recyclerView = view.findViewById(R.id.rv_notes) as RecyclerView
+        searchView = view.findViewById(R.id.search_view) as SearchView
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
