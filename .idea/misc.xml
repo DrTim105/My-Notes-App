@@ -3,10 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/back2.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/back_white.xml" value="0.2203125" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/background.xml" value="0.1" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/background_fab.xml" value="0.2203125" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/bottom_sheet_view.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/cancel.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/delete.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/ic_add.xml" value="0.2203125" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/ic_back.xml" value="0.1" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/ic_search.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/image.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/image1.xml" value="0.2203125" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/note_color_1.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/search.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/tick.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/tick1.xml" value="0.2203125" />
+        <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/drawable/weblink.xml" value="0.2203125" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25" />
         <entry key="..\:/Users/SALIHU TIMOTHY/AndroidStudioProjects/MyNotesApp/app/src/main/res/layout/fragment_create_note.xml" value="0.25" />

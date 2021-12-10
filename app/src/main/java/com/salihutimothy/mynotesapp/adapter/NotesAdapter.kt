@@ -25,7 +25,6 @@ class NotesAdapter() :
     private var cardView: CardView? = null
     private var imgNote : RoundedImageView? = null
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_rv_notes,parent,false)
@@ -60,7 +59,7 @@ class NotesAdapter() :
         if (arrList[position].color != null){
             cardView!!.setCardBackgroundColor(Color.parseColor(arrList[position].color))
         }else{
-//            cardView!!.setCardBackgroundColor(Color.parseColor(R.color.white.toString()))
+            cardView!!.setCardBackgroundColor(Color.parseColor(R.color.cardDefault.toString()))
         }
 
         if (arrList[position].imgPath != null){

@@ -9,6 +9,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.salihutimothy.mynotesapp.adapter.NotesAdapter
 import com.salihutimothy.mynotesapp.database.NotesDatabase
@@ -22,7 +23,7 @@ class HomeFragment : BaseFragment() {
 
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
-    private lateinit var fabCreateNote: FloatingActionButton
+    private lateinit var fabCreateNote: ExtendedFloatingActionButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
 
@@ -55,12 +56,21 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fabCreateNote = view.findViewById(R.id.fabCreateNote) as FloatingActionButton
+        fabCreateNote = view.findViewById(R.id.fabCreateNote) as ExtendedFloatingActionButton
         recyclerView = view.findViewById(R.id.rv_notes) as RecyclerView
         searchView = view.findViewById(R.id.search_view) as SearchView
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) {
+                    fabCreateNote.extend()
+                } else {
+                    fabCreateNote.shrink()
+                }
+            }
+        })
         launch {
             context?.let {
                 val notes = NotesDatabase.getDatabase(it).notesDao().getAllNotes()

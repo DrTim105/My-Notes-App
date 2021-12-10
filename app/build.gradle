@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.salihutimothy.mynotesapp"
-        minSdk 17
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -72,5 +72,7 @@ dependencies {
 
     //coroutines core
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+
+    //expandable floating action button
 
 }

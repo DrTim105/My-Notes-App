@@ -24,8 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
+        android:elevation="@dimen/_10sdp"
         android:background="@drawable/background"
         android:queryHint="Search Notes"
+        android:searchIcon="@drawable/ic_search2"
+        android:closeIcon="@drawable/ic_cancel"
         android:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,59 +37,50 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_10sdp"
         android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fabCreateNote"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@android:drawable/ic_input_add"-->
+<!--        android:tint="@color/white"-->
+<!--        android:layout_marginBottom="@dimen/_20sdp"-->
+<!--        android:layout_marginEnd="@dimen/_20sdp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
-        <ImageView
-            android:id="@+id/tick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/crop_image_menu_rotate_left"
-            app:tint = "@color/black"/>
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/crop_image_menu_rotate_left"
-            app:tint = "@color/black"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
-
-        <ImageView
-            android:id="@+id/link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/crop_image_menu_rotate_left"
-            app:tint = "@color/black"/>
-
-    </LinearLayout>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabCreateNote"
+        style="@style/FloatingActionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add"
-        android:tint="@color/white"
-        android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:icon="@drawable/ic_add2"
+        app:iconTint="#F0F0F0"
+        android:backgroundTint="#EE9A49"
+        android:text="Create Note"
+        android:textColor="#F0F0F0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+<!--    app:fab_content="@string/label_start_chat"-->
+<!--    app:fab_padding_text_icon="@dimen/padding_text_icon"-->
+<!--    app:fab_text_color="@android:color/white"-->
+<!--    app:fab_bg_color="@color/bg_float_action"-->
+<!--    app:fab_icon="@drawable/ic_message_white_24dp"-->
+<!--    app:fab_duration="100"-->
+<!--    app:fab_text_size="@dimen/text_size_action_button"-->
+<!--    app:fab_typeface="fonts/RobotoSlab-Regular.ttf"-->
+<!--    app:fab_padding="@dimen/padding_fab"-->
+<!--    app:fab_expanded="true"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

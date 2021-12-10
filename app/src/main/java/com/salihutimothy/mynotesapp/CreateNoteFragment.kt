@@ -87,23 +87,23 @@ class CreateNoteFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvDateTime = requireActivity().findViewById(R.id.tv_date_time) as TextView
-        tvWebLink = requireActivity().findViewById(R.id.tvWebLink) as TextView
-        imgDone = requireActivity().findViewById(R.id.done) as ImageView
-        imgBack = requireActivity().findViewById(R.id.back) as ImageView
-        imgMore = requireActivity().findViewById(R.id.imgMore) as ImageView
-        imgNote = requireActivity().findViewById(R.id.imgCreateNote) as ImageView
-        imgDelete = requireActivity().findViewById(R.id.imgDelete) as ImageView
-        imgUrlDelete = requireActivity().findViewById(R.id.imgUrlDelete) as ImageView
-        etWebLink = requireActivity().findViewById(R.id.etWebLink) as EditText
-        etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
-        etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
-        etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
-        colorView = requireActivity().findViewById(R.id.colorView) as View
-        btnOk = requireActivity().findViewById(R.id.btnOk) as Button
-        btnCancel = requireActivity().findViewById(R.id.btnCancel) as Button
-        layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
-        layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
+        tvDateTime = view.findViewById(R.id.tv_date_time) as TextView
+        tvWebLink = view.findViewById(R.id.tvWebLink) as TextView
+        imgDone = view.findViewById(R.id.done) as ImageView
+        imgBack = view.findViewById(R.id.back) as ImageView
+        imgMore = view.findViewById(R.id.imgMore) as ImageView
+        imgNote = view.findViewById(R.id.imgCreateNote) as ImageView
+        imgDelete = view.findViewById(R.id.imgDelete) as ImageView
+        imgUrlDelete = view.findViewById(R.id.imgUrlDelete) as ImageView
+        etWebLink = view.findViewById(R.id.etWebLink) as EditText
+        etNoteTitle = view.findViewById(R.id.et_note_title) as EditText
+        etSubTitle = view.findViewById(R.id.et_note_subtitle) as EditText
+        etNoteDesc = view.findViewById(R.id.et_note_desc) as EditText
+        colorView = view.findViewById(R.id.colorView) as View
+        btnOk = view.findViewById(R.id.btnOk) as Button
+        btnCancel = view.findViewById(R.id.btnCancel) as Button
+        layoutImage = view.findViewById(R.id.layoutImage) as RelativeLayout
+        layoutWebUrl = view.findViewById(R.id.layoutWebUrl) as LinearLayout
 
         if (noteId != -1) {
             launch {
