@@ -26,6 +26,7 @@
         android:layout_margin="@dimen/_10sdp"
         android:elevation="@dimen/_10sdp"
         android:background="@drawable/background"
+        android:queryBackground="@android:color/transparent"
         android:queryHint="Search Notes"
         android:searchIcon="@drawable/ic_search2"
         android:closeIcon="@drawable/ic_cancel"

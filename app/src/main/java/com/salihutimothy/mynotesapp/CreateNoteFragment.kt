@@ -60,7 +60,7 @@ class CreateNoteFragment : BaseFragment() {
     private var webLink = ""
     private var noteId = -1
 
-    var selectedColor = "#FFFFFFFF" //
+    var selectedColor = "#F0F0F0" //
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

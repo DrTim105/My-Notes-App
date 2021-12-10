@@ -71,6 +71,7 @@ class HomeFragment : BaseFragment() {
                 }
             }
         })
+
         launch {
             context?.let {
                 val notes = NotesDatabase.getDatabase(it).notesDao().getAllNotes()
