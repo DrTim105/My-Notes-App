@@ -9,12 +9,12 @@
     <color name="white">#ffffff</color>
     <color name="cardDefault">#F0F0F0</color>
 
-    <color name="ColorDefaultNote">#606570</color>
-    <color name="ColorBlueNote">#4e33ff</color>
-    <color name="ColorYellowNote">#ffd633</color>
-    <color name="ColorWhiteNote">#ffffff</color>
-    <color name="ColorPurpleNote">#ae3b76</color>
-    <color name="ColorGreenNote">#0aebaf</color>
-    <color name="ColorOrangeNote">#ff7746</color>
-    <color name="ColorBlackNote">#202734</color>
+    <color name="ColorDefaultNote">#F0F0F0</color>
+    <color name="ColorBlueNote">#DBFEF8</color>
+    <color name="ColorYellowNote">#FCF6B1</color>
+    <color name="ColorBrownNote">#D4B996</color>
+    <color name="ColorPurpleNote">#E6E6FA</color>
+    <color name="ColorGreenNote">#DFFFA5</color>
+    <color name="ColorOrangeNote">#FFBE7B</color>
+    <color name="ColorPinkNote">#FFCCCC</color>
 </resources>
