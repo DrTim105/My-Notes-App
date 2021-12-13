@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:behavior_peekHeight="40dp"
+    android:background="@drawable/background_layout"
     app:layout_behavior="@string/bottom_sheet_behavior"
     tools:context=".CreateNoteFragment">
 
