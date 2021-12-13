@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.TextView
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -130,8 +131,11 @@ class HomeFragment : BaseFragment() {
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
         if (istransition){
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
         }
-        fragmentTransition.replace(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
+        fragmentTransition.replace(R.id.frame_layout,fragment)
+            .addToBackStack(fragment.javaClass.simpleName)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .commit()
     }
 }

@@ -51,6 +51,7 @@
                 android:hint="Note Title"
                 android:maxLines="1"
                 android:padding="@dimen/_10sdp"
+                android:background="@color/white"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +90,7 @@
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:background="@android:color/holo_blue_bright" />
+                    android:background="@color/ColorDefaultNote" />
 
                 <EditText
                     android:id="@+id/et_note_subtitle"
