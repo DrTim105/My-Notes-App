@@ -59,7 +59,7 @@ class NotesAdapter() :
         if (arrList[position].color != null){
             cardView!!.setCardBackgroundColor(Color.parseColor(arrList[position].color))
         }else{
-//            cardView!!.setCardBackgroundColor(Color.parseColor(R.color.cardDefault.toString()))
+            cardView!!.setCardBackgroundColor(Color.parseColor(R.color.cardDefault.toString()))
         }
 
         if (arrList[position].imgPath != null){

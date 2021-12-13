@@ -319,14 +319,7 @@ class CreateNoteFragment : BaseFragment() {
 
                 }
 
-                "Yellow" -> {
-                    selectedColor = intent.getStringExtra("selectedColor")!!
-                    colorView.setBackgroundColor(Color.parseColor(selectedColor))
-
-                }
-
-
-                "Purple" -> {
+                "Brown" -> {
                     selectedColor = intent.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
 
@@ -347,7 +340,13 @@ class CreateNoteFragment : BaseFragment() {
                 }
 
 
-                "Black" -> {
+                "Pink" -> {
+                    selectedColor = intent.getStringExtra("selectedColor")!!
+                    colorView.setBackgroundColor(Color.parseColor(selectedColor))
+
+                }
+
+                "Grey" -> {
                     selectedColor = intent.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
 
@@ -361,6 +360,7 @@ class CreateNoteFragment : BaseFragment() {
                 "WebUrl" -> {
                     layoutWebUrl.visibility = View.VISIBLE
                 }
+
                 "DeleteNote" -> {
                     deleteNote()
                 }
