@@ -10,6 +10,7 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
         android:text="My Notes"

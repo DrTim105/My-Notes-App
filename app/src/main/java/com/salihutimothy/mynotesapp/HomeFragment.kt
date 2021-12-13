@@ -131,11 +131,11 @@ class HomeFragment : BaseFragment() {
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
         if (istransition){
-            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
+//            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
+            fragmentTransition.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
         }
         fragmentTransition.replace(R.id.frame_layout,fragment)
             .addToBackStack(fragment.javaClass.simpleName)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
     }
 }

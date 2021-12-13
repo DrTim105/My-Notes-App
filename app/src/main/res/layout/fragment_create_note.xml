@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/cl_create_note"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -18,42 +19,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_circle_button"
+                android:padding="@dimen/_7sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/crop_image_menu_rotate_left"
-                app:tint="@color/black" />
+                app:srcCompat="@drawable/ic_back" />
 
-            <ImageView
+
+            <ImageButton
                 android:id="@+id/done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_button"
+                android:padding="@dimen/_7sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/crop_image_menu_rotate_left"
-                app:tint="@color/black" />
+                app:srcCompat="@drawable/ic_save" />
 
             <EditText
                 android:id="@+id/et_note_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10sdp"
+                android:background="@android:color/transparent"
                 android:ellipsize="end"
+                android:fontFamily="serif-monospace"
                 android:hint="Note Title"
                 android:maxLines="1"
                 android:padding="@dimen/_10sdp"
-                android:background="@color/white"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back" />
@@ -227,7 +233,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_10sdp"
                 android:layout_marginTop="8dp"
-                android:background="#FAF7F7"
+                android:background="@android:color/transparent"
                 android:gravity="start|top"
                 android:hint="Enter Note Here"
                 android:inputType="textMultiLine"
@@ -255,9 +261,10 @@
             android:id="@+id/imgMore"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
+            android:background="@drawable/background_button"
             android:layout_gravity="center"
-            android:src="@drawable/crop_image_menu_rotate_left"
-            app:tint="@color/black" />
+            android:src="@drawable/ic_more"
+ />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

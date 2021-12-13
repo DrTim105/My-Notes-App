@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -52,6 +53,7 @@ class CreateNoteFragment : BaseFragment() {
     private lateinit var colorView: View
     private lateinit var layoutImage: RelativeLayout
     private lateinit var layoutWebUrl: LinearLayout
+    private lateinit var layoutNote: ConstraintLayout
     private lateinit var btnOk: Button
     private lateinit var btnCancel: Button
     var currentDate: String? = null
@@ -309,6 +311,7 @@ class CreateNoteFragment : BaseFragment() {
             colorView = requireActivity().findViewById(R.id.colorView) as View
             layoutWebUrl = requireActivity().findViewById(R.id.layoutWebUrl) as LinearLayout
             layoutImage = requireActivity().findViewById(R.id.layoutImage) as RelativeLayout
+            layoutNote = requireActivity().findViewById(R.id.cl_create_note) as ConstraintLayout
             imgNote = requireActivity().findViewById(R.id.imgCreateNote) as ImageView
 
 
@@ -316,7 +319,7 @@ class CreateNoteFragment : BaseFragment() {
                 "Blue" -> {
                     selectedColor = intent.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
-
+                    layoutNote.setBackgroundColor(Color.parseColor(selectedColor))
                 }
 
                 "Brown" -> {
