@@ -319,7 +319,7 @@ class CreateNoteFragment : BaseFragment() {
                 "Blue" -> {
                     selectedColor = intent.getStringExtra("selectedColor")!!
                     colorView.setBackgroundColor(Color.parseColor(selectedColor))
-                    layoutNote.setBackgroundColor(Color.parseColor(selectedColor))
+//                    layoutNote.setBackgroundColor(Color.parseColor(selectedColor))
                 }
 
                 "Brown" -> {
