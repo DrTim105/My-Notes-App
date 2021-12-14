@@ -142,7 +142,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
         fNote1.setOnClickListener {
             Log.d("NOTES_BOTTOM_FRAGMENT", "fNote1 clicked")
 
-            imgNote1.setImageResource(R.drawable.crop_image_menu_rotate_left) // tick image
+            imgNote1.setImageResource(R.drawable.ic_tick) // tick image
             imgNote2.setImageResource(0)
             imgNote3.setImageResource(0)
             imgNote4.setImageResource(0)
@@ -159,7 +159,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
 
         fNote2.setOnClickListener {
             imgNote1.setImageResource(0)
-            imgNote2.setImageResource(R.drawable.crop_image_menu_rotate_left)
+            imgNote2.setImageResource(R.drawable.ic_tick)
             imgNote3.setImageResource(0)
             imgNote4.setImageResource(0)
             imgNote5.setImageResource(0)
@@ -176,7 +176,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
         fNote3.setOnClickListener {
             imgNote1.setImageResource(0)
             imgNote2.setImageResource(0)
-            imgNote3.setImageResource(R.drawable.crop_image_menu_rotate_left)
+            imgNote3.setImageResource(R.drawable.ic_tick)
             imgNote4.setImageResource(0)
             imgNote5.setImageResource(0)
             imgNote6.setImageResource(0)
@@ -193,13 +193,13 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
             imgNote1.setImageResource(0)
             imgNote2.setImageResource(0)
             imgNote3.setImageResource(0)
-            imgNote4.setImageResource(R.drawable.crop_image_menu_rotate_left)
+            imgNote4.setImageResource(R.drawable.ic_tick)
             imgNote5.setImageResource(0)
             imgNote6.setImageResource(0)
-            selectedColor = "#FFBE7B"
+            selectedColor = "#FCF6B1"
 
             val intent = Intent("bottom_sheet_action")
-            intent.putExtra("action", "Orange")
+            intent.putExtra("action", "Yellow")
             intent.putExtra("selectedColor", selectedColor)
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
         }
@@ -210,7 +210,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
             imgNote2.setImageResource(0)
             imgNote3.setImageResource(0)
             imgNote4.setImageResource(0)
-            imgNote5.setImageResource(R.drawable.crop_image_menu_rotate_left)
+            imgNote5.setImageResource(R.drawable.ic_tick)
             imgNote6.setImageResource(0)
             selectedColor = "#FFCCCC"
 
@@ -226,7 +226,7 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
             imgNote3.setImageResource(0)
             imgNote4.setImageResource(0)
             imgNote5.setImageResource(0)
-            imgNote6.setImageResource(R.drawable.crop_image_menu_rotate_left)
+            imgNote6.setImageResource(R.drawable.ic_tick)
             selectedColor = "#F0F0F0"
 
             val intent = Intent("bottom_sheet_action")

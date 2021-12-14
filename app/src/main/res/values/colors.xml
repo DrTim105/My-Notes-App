@@ -10,6 +10,7 @@
     <color name="cardDefault">#F0F0F0</color>
 
     <color name="ColorDefaultNote">#F0F0F0</color>
+    <color name="ColorAccent">#EE9A49</color>
     <color name="ColorBlueNote">#DBFEF8</color>
     <color name="ColorYellowNote">#FCF6B1</color>
     <color name="ColorBrownNote">#D4B996</color>
