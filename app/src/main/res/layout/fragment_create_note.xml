@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_create_note"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/cl_create_note"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -23,11 +23,11 @@
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_circle_button"
-                android:padding="@dimen/_7sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/background_circle_button"
+                android:padding="@dimen/_7sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_back" />
@@ -37,11 +37,11 @@
                 android:id="@+id/done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_button"
-                android:padding="@dimen/_7sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/background_button"
+                android:padding="@dimen/_7sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_save" />
@@ -60,7 +60,6 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back" />
@@ -97,8 +96,8 @@
                     android:id="@+id/colorView"
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/_3sdp"
                     android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_3sdp"
                     android:background="@color/ColorDefaultNote" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -118,12 +117,12 @@
                         android:id="@+id/et_note_sub_title"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:ellipsize="end"
                         android:fontFamily="@font/lato"
                         android:hint="SubTitle"
-                        android:textSize="@dimen/_10ssp"
-                        android:ellipsize="end"
                         android:inputType="textShortMessage"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/_10ssp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -280,10 +279,9 @@
             android:id="@+id/imgMore"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
-            android:background="@drawable/background_button"
             android:layout_gravity="center"
-            android:src="@drawable/ic_more"
- />
+            android:background="@drawable/background_button"
+            android:src="@drawable/ic_more" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
