@@ -6,18 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/app_icon"
+        android:paddingTop="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif-monospace"
-        android:paddingStart="@dimen/_10sdp"
+        android:fontFamily="@font/baloo"
+        android:gravity="center_horizontal"
         android:paddingTop="@dimen/_10sdp"
         android:text="My Notes"
+        android:textColor="#9E968E"
         android:textSize="@dimen/_15ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
@@ -41,8 +51,7 @@
         android:id="@+id/rv_notes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_marginTop="80dp"
+        android:layout_margin="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -71,20 +80,10 @@
         app:iconTint="#F0F0F0"
         android:backgroundTint="#EE9A49"
         android:text="Create Note"
+        android:fontFamily="@font/lato_bold"
         android:textAllCaps="false"
         android:textColor="#F0F0F0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-<!--    app:fab_content="@string/label_start_chat"-->
-<!--    app:fab_padding_text_icon="@dimen/padding_text_icon"-->
-<!--    app:fab_text_color="@android:color/white"-->
-<!--    app:fab_bg_color="@color/bg_float_action"-->
-<!--    app:fab_icon="@drawable/ic_message_white_24dp"-->
-<!--    app:fab_duration="100"-->
-<!--    app:fab_text_size="@dimen/text_size_action_button"-->
-<!--    app:fab_typeface="fonts/RobotoSlab-Regular.ttf"-->
-<!--    app:fab_padding="@dimen/padding_fab"-->
-<!--    app:fab_expanded="true"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
