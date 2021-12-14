@@ -27,6 +27,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.google.android.material.textfield.TextInputEditText
 import com.salihutimothy.mynotesapp.database.NotesDatabase
 import com.salihutimothy.mynotesapp.entities.Notes
 import com.salihutimothy.mynotesapp.util.NotesBottomSheetFragment
@@ -47,9 +48,9 @@ class CreateNoteFragment : BaseFragment() {
     private lateinit var imgDelete: ImageView
     private lateinit var imgUrlDelete: ImageView
     private lateinit var etNoteTitle: EditText
-    private lateinit var etSubTitle: EditText
     private lateinit var etNoteDesc: EditText
     private lateinit var etWebLink: EditText
+    private lateinit var etNoteSubTitle: TextInputEditText
     private lateinit var colorView: View
     private lateinit var layoutImage: RelativeLayout
     private lateinit var layoutWebUrl: LinearLayout
@@ -99,7 +100,7 @@ class CreateNoteFragment : BaseFragment() {
         imgUrlDelete = view.findViewById(R.id.imgUrlDelete) as ImageView
         etWebLink = view.findViewById(R.id.etWebLink) as EditText
         etNoteTitle = view.findViewById(R.id.et_note_title) as EditText
-        etSubTitle = view.findViewById(R.id.et_note_subtitle) as EditText
+        etNoteSubTitle = view.findViewById(R.id.et_note_sub_title) as TextInputEditText
         etNoteDesc = view.findViewById(R.id.et_note_desc) as EditText
         colorView = view.findViewById(R.id.colorView) as View
         btnOk = view.findViewById(R.id.btnOk) as Button
@@ -113,7 +114,7 @@ class CreateNoteFragment : BaseFragment() {
                     val notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
                     colorView.setBackgroundColor(Color.parseColor(notes.color))
                     etNoteTitle.setText(notes.title)
-                    etSubTitle.setText(notes.subTitle)
+                    etNoteSubTitle.setText(notes.subTitle)
                     etNoteDesc.setText(notes.noteText)
 
 
@@ -219,7 +220,7 @@ class CreateNoteFragment : BaseFragment() {
 
         etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
         etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
-        etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
+        etNoteSubTitle = requireActivity().findViewById(R.id.et_note_sub_title) as TextInputEditText
 
         launch {
 
@@ -227,7 +228,7 @@ class CreateNoteFragment : BaseFragment() {
                 val notes = NotesDatabase.getDatabase(it).notesDao().getSpecificNote(noteId)
 
                 notes.title = etNoteTitle.text.toString()
-                notes.subTitle = etSubTitle.text.toString()
+                notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
                 notes.color = selectedColor
@@ -236,7 +237,7 @@ class CreateNoteFragment : BaseFragment() {
 
                 NotesDatabase.getDatabase(it).notesDao().updateNote(notes)
                 etNoteTitle.setText("")
-                etSubTitle.setText("")
+                etNoteSubTitle.setText("")
                 etNoteDesc.setText("")
                 layoutImage.visibility = View.GONE
                 imgNote.visibility = View.GONE
@@ -250,19 +251,17 @@ class CreateNoteFragment : BaseFragment() {
 
         etNoteTitle = requireActivity().findViewById(R.id.et_note_title) as EditText
         etNoteDesc = requireActivity().findViewById(R.id.et_note_desc) as EditText
-        etSubTitle = requireActivity().findViewById(R.id.et_note_subtitle) as EditText
+        etNoteSubTitle = requireActivity().findViewById(R.id.et_note_sub_title) as TextInputEditText
 
         if (etNoteTitle.text.isNullOrEmpty()) {
             Toast.makeText(context, "Note Title is Required", Toast.LENGTH_SHORT).show()
-        } else if (etSubTitle.text.isNullOrEmpty()) {
-            Toast.makeText(context, "Note Sub Title is Required", Toast.LENGTH_SHORT).show()
         } else if (etNoteDesc.text.isNullOrEmpty()) {
             Toast.makeText(context, "Note Description is Required", Toast.LENGTH_SHORT).show()
         } else {
             launch {
                 val notes = Notes()
                 notes.title = etNoteTitle.text.toString()
-                notes.subTitle = etSubTitle.text.toString()
+                notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
                 notes.color = selectedColor
@@ -272,7 +271,7 @@ class CreateNoteFragment : BaseFragment() {
                     NotesDatabase.getDatabase(it).notesDao().insertNotes(notes)
                     etNoteDesc.setText("")
                     etNoteTitle.setText("")
-                    etSubTitle.setText("")
+                    etNoteSubTitle.setText("")
                     layoutImage.visibility = View.GONE
                     imgNote.visibility = View.GONE
                     tvWebLink.visibility = View.GONE

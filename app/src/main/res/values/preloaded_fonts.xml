@@ -2,6 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
+        <item>@font/lato</item>
+        <item>@font/lato_bold</item>
         <item>@font/lato_thin</item>
         <item>@font/lato_thin_italic</item>
         <item>@font/rosario</item>

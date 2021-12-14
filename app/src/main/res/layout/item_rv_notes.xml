@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_5sdp"
-        app:cardBackgroundColor="#F0F0F0"
         android:layout_margin="@dimen/_5sdp"
-        android:padding="@dimen/_5sdp">
+        android:padding="@dimen/_5sdp"
+        app:cardBackgroundColor="#F0F0F0"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_5sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,21 +27,21 @@
                 android:adjustViewBounds="true"
                 android:visibility="gone"
                 app:riv_corner_radius_top_left="@dimen/_10sdp"
-                app:riv_corner_radius_top_right="@dimen/_10sdp"/>
+                app:riv_corner_radius_top_right="@dimen/_10sdp" />
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_15ssp"
-                android:text="My notes"
-                android:textStyle="bold"
+                android:fontFamily="@font/lato"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="My notes"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvWebLink"
@@ -51,6 +51,7 @@
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:autoLink="web"
                 android:ellipsize="end"
+                android:fontFamily="@font/lato"
                 android:padding="@dimen/_10sdp"
                 android:textColor="#9F9393"
                 android:textColorHint="#9F9393"
@@ -61,27 +62,29 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_11ssp"
-                android:text="My Notes"
+                android:fontFamily="@font/lato"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="My Notes"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/_9ssp"
-                android:text="My Notes"
+                android:fontFamily="@font/lato"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_2sdp"
                 android:paddingBottom="@dimen/_5sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="My Notes"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

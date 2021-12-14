@@ -53,8 +53,9 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@android:color/transparent"
                 android:ellipsize="end"
-                android:fontFamily="serif-monospace"
+                android:fontFamily="@font/lato_bold"
                 android:hint="Note Title"
+                android:inputType="textShortMessage"
                 android:maxLines="1"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
@@ -72,6 +73,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:ellipsize="end"
+                android:fontFamily="@font/lato"
                 android:maxLines="1"
                 android:paddingStart="@dimen/_10sdp"
                 android:textColor="@color/black"
@@ -95,19 +97,34 @@
                     android:id="@+id/colorView"
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_3sdp"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:background="@color/ColorDefaultNote" />
 
-                <EditText
-                    android:id="@+id/et_note_subtitle"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_note_subtitle"
+                    style="@style/LoginTextInputLayoutStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:hint="Note Sub Title"
-                    android:maxLines="1"
-                    android:padding="@dimen/_10sdp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_8ssp"
+                    android:theme="@style/LoginTextInputLayoutStyle"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="#EE9A49"
+                    app:startIconTint="#EE9A49">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_note_sub_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/lato"
+                        android:hint="SubTitle"
+                        android:textSize="@dimen/_10ssp"
+                        android:ellipsize="end"
+                        android:inputType="textShortMessage"
+                        android:textCursorDrawable="@null" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -240,7 +257,7 @@
                 android:inputType="textMultiLine"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.52"

@@ -17,10 +17,20 @@
     <style name="FloatingActionButtonStyle" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
     </style>
+
     <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-
         <item name="cornerSize">20%</item>
+    </style>
 
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorPrimary">#EE9A49</item>
+        <item name="android:textColorHint">#808080</item>
+        <item name="boxCornerRadiusBottomEnd">5dp</item>
+        <item name="boxCornerRadiusBottomStart">5dp</item>
+        <item name="boxCornerRadiusTopEnd">5dp</item>
+        <item name="boxCornerRadiusTopStart">5dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
     </style>
 
 </resources>
