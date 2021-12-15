@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         }
         fragmentTransition.add(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
-
-
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        } else {
+//            super.onBackPressed()
+            moveTaskToBack(true)
+        }
+    }
 }
