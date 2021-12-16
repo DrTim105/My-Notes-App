@@ -12,6 +12,7 @@
         android:layout_height="0dp"
         android:src="@drawable/app_icon"
         android:paddingTop="@dimen/_10ssp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +24,7 @@
         android:fontFamily="@font/baloo"
         android:gravity="center_horizontal"
         android:paddingTop="@dimen/_10sdp"
+        android:visibility="gone"
         android:text="My Notes"
         android:textColor="#9E968E"
         android:textSize="@dimen/_15ssp"
@@ -77,12 +79,12 @@
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         app:icon="@drawable/ic_add2"
-        app:iconTint="#F0F0F0"
-        android:backgroundTint="#EE9A49"
+        app:iconTint="@color/ColorAccent"
+        android:backgroundTint="#FBDDC0"
         android:text="Create Note"
         android:fontFamily="@font/lato_bold"
         android:textAllCaps="false"
-        android:textColor="#F0F0F0"
+        android:textColor="@color/ColorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -98,7 +98,8 @@ class HomeFragment : BaseFragment() {
                 val tempArr = ArrayList<Notes>()
 
                 for (arr in arrNotes){
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString()) ||
+                    arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
                         tempArr.add(arr)
                     }
                 }

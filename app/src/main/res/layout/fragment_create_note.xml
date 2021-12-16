@@ -40,7 +40,7 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:background="@drawable/background_button"
+                android:background="@drawable/background_button_web"
                 android:padding="@dimen/_7sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -220,7 +220,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/ColorAccent"
                         android:textSize="@dimen/_12ssp"
-                        app:backgroundTint="@color/ColorDefaultNote" />
+                        app:backgroundTint="#FBDDC0" />
 
                     <Button
                         android:id="@+id/btnOk"
@@ -233,7 +233,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/ColorAccent"
                         android:textSize="@dimen/_12ssp"
-                        app:backgroundTint="@color/ColorDefaultNote" />
+                        app:backgroundTint="#FBDDC0" />
 
 
                 </LinearLayout>
@@ -287,10 +287,11 @@
 
         <ImageView
             android:id="@+id/imgMore"
-            android:layout_width="@dimen/_24sdp"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/_24sdp"
             android:layout_gravity="center"
-            android:background="@drawable/background_button"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:background="@drawable/background_button_web"
             android:src="@drawable/ic_more" />
     </FrameLayout>
 
