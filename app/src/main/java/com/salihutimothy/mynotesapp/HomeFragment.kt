@@ -18,6 +18,8 @@ import com.salihutimothy.mynotesapp.entities.Notes
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
+import android.graphics.Typeface
+import androidx.core.content.res.ResourcesCompat
 
 
 class HomeFragment : BaseFragment() {
@@ -87,6 +89,11 @@ class HomeFragment : BaseFragment() {
         fabCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), false)
         }
+
+        val id = requireContext().resources!!.getIdentifier("android:id/search_src_text", null, null)
+        val searchText = searchView.findViewById(id) as TextView
+        val myCustomFont = ResourcesCompat.getFont(requireContext(), R.font.lato)
+        searchText.typeface = myCustomFont
 
         searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
