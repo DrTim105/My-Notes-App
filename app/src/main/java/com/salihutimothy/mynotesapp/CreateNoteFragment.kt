@@ -26,6 +26,7 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestPermissi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.textfield.TextInputEditText
 import com.salihutimothy.mynotesapp.database.NotesDatabase
@@ -167,7 +168,7 @@ class CreateNoteFragment : BaseFragment() {
         }
 
         imgBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            requireActivity().supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
 
         imgMore.setOnClickListener {
@@ -289,19 +290,6 @@ class CreateNoteFragment : BaseFragment() {
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }
-    }
-
-    private fun replaceFragment(fragment: Fragment, istransition: Boolean) {
-        val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
-
-        if (istransition) {
-            fragmentTransition.setCustomAnimations(
-                android.R.anim.slide_out_right,
-                android.R.anim.slide_in_left
-            )
-        }
-        fragmentTransition.add(R.id.frame_layout, fragment)
-            .addToBackStack(fragment.javaClass.simpleName)
     }
 
     private val BroadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
