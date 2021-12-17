@@ -168,7 +168,7 @@ class CreateNoteFragment : BaseFragment() {
         }
 
         imgBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         imgMore.setOnClickListener {
@@ -291,6 +291,7 @@ class CreateNoteFragment : BaseFragment() {
             }
         }
     }
+
 
     private val BroadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {

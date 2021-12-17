@@ -63,6 +63,7 @@ class HomeFragment : BaseFragment() {
         recyclerView = view.findViewById(R.id.rv_notes) as RecyclerView
         searchView = view.findViewById(R.id.search_view) as SearchView
 
+
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -95,8 +96,23 @@ class HomeFragment : BaseFragment() {
         val myCustomFont = ResourcesCompat.getFont(requireContext(), R.font.lato)
         searchText.typeface = myCustomFont
 
+
+
         searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
+                searchView.isIconified = true
+
+                val tempArr = ArrayList<Notes>()
+
+                for (arr in arrNotes){
+                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString()) ||
+                        arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                        tempArr.add(arr)
+                    }
+                }
+
+                notesAdapter.setData(tempArr)
+                notesAdapter.notifyDataSetChanged()
                 return true
             }
 
