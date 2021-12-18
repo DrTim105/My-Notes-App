@@ -32,7 +32,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.salihutimothy.mynotesapp.database.NotesDatabase
 import com.salihutimothy.mynotesapp.entities.Notes
 import com.salihutimothy.mynotesapp.util.NotesBottomSheetFragment
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
+import java.io.File
 import java.text.DateFormat.getDateTimeInstance
 import java.util.*
 
@@ -124,7 +126,9 @@ class CreateNoteFragment : BaseFragment() {
                     if (notes.imgPath != "") {
                         Log.d("CreateNoteFragment", "image identified")
                         selectedImagePath = notes.imgPath!!
-                        imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
+                        Picasso.get().load(File(selectedImagePath)).into(imgNote)
+
+//                        imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
                         layoutImage.visibility = View.VISIBLE
                         imgNote.visibility = View.VISIBLE
                         imgDelete.visibility = View.VISIBLE
@@ -260,6 +264,8 @@ class CreateNoteFragment : BaseFragment() {
             Toast.makeText(context, "Note Description is Required", Toast.LENGTH_SHORT).show()
         } else {
             launch {
+                Log.d("CreateNoteFragment", "saving image path $selectedImagePath")
+
                 val notes = Notes()
                 notes.title = etNoteTitle.text.toString()
                 notes.subTitle = etNoteSubTitle.text.toString()

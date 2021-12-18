@@ -2,6 +2,7 @@ package com.salihutimothy.mynotesapp.adapter
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedImageView
 import com.salihutimothy.mynotesapp.R
 import com.salihutimothy.mynotesapp.entities.Notes
+import com.squareup.picasso.Picasso
+import java.io.File
+
 //import kotlinx.android.synthetic.main.item_rv_notes.view.*
 
 
@@ -62,10 +66,14 @@ class NotesAdapter() :
             cardView!!.setCardBackgroundColor(Color.parseColor(R.color.cardDefault.toString()))
         }
 
-        if (arrList[position].imgPath != null){
-            imgNote!!.setImageBitmap(BitmapFactory.decodeFile(arrList[position].imgPath))
+        if (arrList[position].imgPath != null) {
+            Picasso.get().load(File(arrList[position].imgPath!!)).into(imgNote!!)
+//            imgNote!!.setImageBitmap(BitmapFactory.decodeFile(arrList[position].imgPath))
+            Log.d("NotesAdapter", "returning image path ${arrList[position].imgPath}")
+
             imgNote!!.visibility = View.VISIBLE
         }else{
+            Log.d("NotesAdapter", "returning empty string? ${arrList[position].imgPath}")
             imgNote!!.visibility = View.GONE
         }
 

@@ -108,9 +108,9 @@ class NotesBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         layoutDeleteNote = requireDialog().findViewById(R.id.layoutDeleteNote) as LinearLayout
 
-        if (noteId != -1){
+        if (noteId != -1) {
             layoutDeleteNote.visibility = View.VISIBLE
-        }else{
+        } else {
             layoutDeleteNote.visibility = View.GONE
         }
         setListener()
