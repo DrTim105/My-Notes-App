@@ -19,6 +19,8 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 import android.graphics.Typeface
+import android.util.TypedValue
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 
 
@@ -65,7 +67,8 @@ class HomeFragment : BaseFragment() {
 
 
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) {
@@ -91,22 +94,26 @@ class HomeFragment : BaseFragment() {
             replaceFragment(CreateNoteFragment.newInstance(), false)
         }
 
-        val id = requireContext().resources!!.getIdentifier("android:id/search_src_text", null, null)
+        val id =
+            requireContext().resources!!.getIdentifier("android:id/search_src_text", null, null)
         val searchText = searchView.findViewById(id) as TextView
         val myCustomFont = ResourcesCompat.getFont(requireContext(), R.font.lato)
         searchText.typeface = myCustomFont
+        searchText.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+            resources.getDimensionPixelSize(R.dimen.text_small).toFloat()
+        );
 
 
 
-        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                searchView.isIconified = true
 
                 val tempArr = ArrayList<Notes>()
 
-                for (arr in arrNotes){
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString()) ||
-                        arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                for (arr in arrNotes) {
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString()) ||
+                        arr.noteText!!.lowercase(Locale.getDefault()).contains(p0.toString())
+                    ) {
                         tempArr.add(arr)
                     }
                 }
@@ -120,9 +127,10 @@ class HomeFragment : BaseFragment() {
 
                 val tempArr = ArrayList<Notes>()
 
-                for (arr in arrNotes){
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString()) ||
-                    arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                for (arr in arrNotes) {
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString()) ||
+                        arr.noteText!!.lowercase(Locale.getDefault()).contains(p0.toString())
+                    ) {
                         tempArr.add(arr)
                     }
                 }
@@ -134,12 +142,14 @@ class HomeFragment : BaseFragment() {
 
         })
 
+
+
     }
 
     private val onClicked = object : NotesAdapter.OnItemClickListener {
         override fun onClicked(noteId: Int) {
 
-            val fragment : Fragment
+            val fragment: Fragment
             val bundle = Bundle()
             bundle.putInt("noteId", noteId)
             fragment = CreateNoteFragment.newInstance()
@@ -151,18 +161,17 @@ class HomeFragment : BaseFragment() {
 
     }
 
-    private fun replaceFragment(fragment: Fragment, istransition:Boolean){
+    private fun replaceFragment(fragment: Fragment, istransition: Boolean) {
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
-        if (istransition){
+        if (istransition) {
 //            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
             fragmentTransition.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
         }
-        fragmentTransition.replace(R.id.frame_layout,fragment)
+        fragmentTransition.replace(R.id.frame_layout, fragment)
             .addToBackStack(fragment.javaClass.simpleName)
             .commit()
     }
-
 
 
 }

@@ -35,7 +35,7 @@
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/background"
         android:closeIcon="@drawable/ic_cancel"
