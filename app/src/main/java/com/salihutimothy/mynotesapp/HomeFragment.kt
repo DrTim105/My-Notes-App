@@ -164,10 +164,11 @@ class HomeFragment : BaseFragment() {
     private fun replaceFragment(fragment: Fragment, istransition: Boolean) {
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
-        if (istransition) {
 //            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-        }
+//            fragmentTransition.setCustomAnimations(R.anim.slide_right_to_left, R.anim.exit_right_to_left,
+//            R.anim.slide_left_to_right, R.anim.exit_left_to_right)
+            fragmentTransition.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out,android.R.anim.fade_in,android.R.anim.fade_out)
+
         fragmentTransition.replace(R.id.frame_layout, fragment)
             .addToBackStack(null)
             .commit()

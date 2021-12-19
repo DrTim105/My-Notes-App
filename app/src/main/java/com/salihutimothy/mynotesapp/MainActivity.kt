@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         if (istransition){
             fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
         }
-        fragmentTransition.add(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
+        fragmentTransition.replace(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
 
     override fun onBackPressed() {
@@ -29,5 +29,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             moveTaskToBack(true)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
     }
 }

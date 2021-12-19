@@ -76,4 +76,7 @@ dependencies {
     // picasso library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // edit text library
+    implementation 'jp.wasabeef:richeditor-android:2.0.0'
+
 }
