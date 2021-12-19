@@ -1,5 +1,6 @@
 package com.salihutimothy.mynotesapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import android.graphics.Typeface
 import android.util.TypedValue
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
 
@@ -66,6 +68,10 @@ class HomeFragment : BaseFragment() {
         searchView = view.findViewById(R.id.search_view) as SearchView
 
 
+        val imm: InputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -99,9 +105,10 @@ class HomeFragment : BaseFragment() {
         val searchText = searchView.findViewById(id) as TextView
         val myCustomFont = ResourcesCompat.getFont(requireContext(), R.font.lato)
         searchText.typeface = myCustomFont
-        searchText.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+        searchText.setTextSize(
+            TypedValue.COMPLEX_UNIT_PX,
             resources.getDimensionPixelSize(R.dimen.text_small).toFloat()
-        );
+        )
 
 
 
@@ -143,7 +150,6 @@ class HomeFragment : BaseFragment() {
         })
 
 
-
     }
 
     private val onClicked = object : NotesAdapter.OnItemClickListener {
@@ -167,7 +173,12 @@ class HomeFragment : BaseFragment() {
 //            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
 //            fragmentTransition.setCustomAnimations(R.anim.slide_right_to_left, R.anim.exit_right_to_left,
 //            R.anim.slide_left_to_right, R.anim.exit_left_to_right)
-            fragmentTransition.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out,android.R.anim.fade_in,android.R.anim.fade_out)
+        fragmentTransition.setCustomAnimations(
+            android.R.anim.fade_in,
+            android.R.anim.fade_out,
+            android.R.anim.fade_in,
+            android.R.anim.fade_out
+        )
 
         fragmentTransition.replace(R.id.frame_layout, fragment)
             .addToBackStack(null)

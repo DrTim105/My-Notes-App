@@ -15,6 +15,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -162,6 +164,45 @@ class CreateNoteFragment : BaseFragment() {
         currentDate = sdf.format(Date())
 
         tvDateTime.text = currentDate
+        var bulletList = false
+
+        etNoteDesc.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                if (count > before) {
+                    var newText = s
+//                    if (newText.toString().length == 1) {
+//                        newText = "- $newText"
+//                        etNoteDesc.setText(newText)
+//                        etNoteDesc.setSelection(etNoteDesc.text.length)
+//                    }
+                    if (newText.toString().endsWith("\n-")) {
+                        Log.d("CreateNoteFragment", "new line with - entered")
+                        bulletList = true
+//                        newText = newText.toString().replace("\n-", "\n- ")
+//                        etNoteDesc.setText(newText)
+//                        etNoteDesc.setSelection(etNoteDesc.text.length)
+                    }
+                    if (bulletList && newText.toString().endsWith("\n")){
+                        Log.d("CreateNoteFragment", "set new line to -")
+
+                        newText = newText.toString().replace("\n", "\n- ")
+                        newText = newText.toString().replace("- -", "-")
+                        etNoteDesc.setText(newText)
+                        etNoteDesc.setSelection(etNoteDesc.text.length)
+                    }
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
 
         imgDone.setOnClickListener {
             if (noteId != -1) {

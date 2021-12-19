@@ -60,17 +60,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/fabCreateNote"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@android:drawable/ic_input_add"-->
-<!--        android:tint="@color/white"-->
-<!--        android:layout_marginBottom="@dimen/_20sdp"-->
-<!--        android:layout_marginEnd="@dimen/_20sdp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabCreateNote"
         style="@style/FloatingActionButtonStyle"
