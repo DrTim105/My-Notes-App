@@ -166,10 +166,10 @@ class HomeFragment : BaseFragment() {
 
         if (istransition) {
 //            fragmentTransition.setCustomAnimations(R.anim.zoom_in, R.anim.zoom_out)
-            fragmentTransition.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            fragmentTransition.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
         }
         fragmentTransition.replace(R.id.frame_layout, fragment)
-            .addToBackStack(fragment.javaClass.simpleName)
+            .addToBackStack(null)
             .commit()
     }
 
