@@ -21,6 +21,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import android.graphics.Typeface
 import android.util.TypedValue
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.res.ResourcesCompat
@@ -67,7 +68,7 @@ class HomeFragment : BaseFragment() {
         recyclerView = view.findViewById(R.id.rv_notes) as RecyclerView
         searchView = view.findViewById(R.id.search_view) as SearchView
 
-
+//        searchView.clearFocus()
         val imm: InputMethodManager =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
