@@ -79,4 +79,6 @@ dependencies {
     // edit text library
     implementation 'jp.wasabeef:richeditor-android:2.0.0'
 
+    // scalable unit
+
 }

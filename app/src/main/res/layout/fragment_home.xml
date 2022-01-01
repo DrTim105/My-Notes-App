@@ -39,7 +39,7 @@
         android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/background"
         android:closeIcon="@drawable/ic_cancel"
-        android:elevation="@dimen/_10sdp"
+        android:elevation="@dimen/_5sdp"
         android:fontFamily="@font/lato"
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"

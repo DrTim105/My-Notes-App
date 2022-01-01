@@ -5,6 +5,7 @@
     android:id="@+id/cl_create_note"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -59,7 +60,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back" />
@@ -74,6 +75,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/lato"
                 android:maxLines="1"
+                android:autoSizeTextType="uniform"
                 android:paddingStart="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_8ssp"
@@ -267,7 +269,7 @@
                 android:lineSpacingExtra="8sp"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.52"
@@ -289,10 +291,10 @@
         <ImageView
             android:id="@+id/imgMore"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingHorizontal="@dimen/_12sdp"
             android:background="@drawable/background_button_web"
+            android:paddingHorizontal="@dimen/_12sdp"
             android:src="@drawable/ic_more" />
     </FrameLayout>
 
