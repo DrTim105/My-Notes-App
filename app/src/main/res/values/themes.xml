@@ -34,4 +34,12 @@
         <item name="boxStrokeWidthFocused">1dp</item>
     </style>
 
+    <style name="BottomSheetDialogStyle" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetModalStyle</item>
+    </style>
+
+    <style name="BottomSheetModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_layout</item>
+    </style>
+
 </resources>
